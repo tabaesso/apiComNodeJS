@@ -1,13 +1,21 @@
 'use strict';
 
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
 // conecta ao banco
-mongoose.connect('seu_banco_aqui');
+mongoose.connect(
+  'mongodb+srv://tabata:tabata123@ndstr-k8dbv.azure.mongodb.net/test?retryWrites=true&w=majority',
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  },
+);
 
 // carrega os models
 const Product = require('./models/product');
@@ -16,8 +24,9 @@ const Product = require('./models/product');
 const indexRoutes = require('./routes/indexRoutes'); //Carrega as rotas
 const crudRoutes = require('./routes/productRoutes'); //Carrega as rotas
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRoutes);
 app.use('/products', crudRoutes);
