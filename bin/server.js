@@ -1,4 +1,4 @@
-const app = require('../src/app');
+const app = require('../src/index');
 const http = require('http');
 const debug = require('debug')('balta:server'); //nodestr
 
