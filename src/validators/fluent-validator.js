@@ -2,46 +2,43 @@
 
 let errors = [];
 
-function ValidationContract(){
+class ValidationContract {
+  constructor() {
     errors = [];
-}
+  }
 
-ValidationContract.prototype.isRequired = (value, message) => {
-    if (!value || value.length <= 0)
-        errors.push({ message: message });
-}
+  isRequired(value, message) {
+    if (!value || value.length <= 0) errors.push({ message: message });
+  }
 
-ValidationContract.prototype.hasMinLen = (value, min, message) => {
-    if (!value || value.length < min)
-        errors.push({ message: message });
-}
+  hasMinLen(value, min, message) {
+    if (!value || value.length < min) errors.push({ message: message });
+  }
 
-ValidationContract.prototype.hasMaxLen = (value, max, message) => {
-    if (!value || value.length > max)
-        errors.push({ message: message });
-}
+  hasMaxLen(value, max, message) {
+    if (!value || value.length > max) errors.push({ message: message });
+  }
 
-ValidationContract.prototype.isFixedLen = (value, min, message) => {
-    if (value.length != len)
-        errors.push({ message: message });
-}
+  isFixedLen(value, min, message) {
+    if (value.length != len) errors.push({ message: message });
+  }
 
-ValidationContract.prototype.isEmail = (value, message) => {
+  isEmail(value, message) {
     var reg = new RegExp(/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
-    if (!reg.test(value))
-        errors.push({ message: message });
-}
+    if (!reg.test(value)) errors.push({ message: message });
+  }
 
-ValidationContract.prototype.errors = () => {
+  errors() {
     return errors;
-}
+  }
 
-ValidationContract.prototype.clear = () => {
+  clear() {
     errors = [];
-}
+  }
 
-ValidationContract.prototype.isValid = () => {
+  isValid() {
     return errors.length == 0;
+  }
 }
 
 module.exports = ValidationContract;
