@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.6",
-    "@types/mongoose": "^5.7.21",
+    "@types/mongoose": "^5.7.22",
     "nodemon": "^2.0.4"
   }
 }
