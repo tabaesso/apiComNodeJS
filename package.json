@@ -15,7 +15,7 @@
     "debug": "^4.1.1",
     "express": "^4.17.1",
     "http": "0.0.0",
-    "mongoose": "^5.9.16"
+    "mongoose": "^5.9.19"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
